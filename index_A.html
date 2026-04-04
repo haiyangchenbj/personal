@@ -32,36 +32,6 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* ── LANGUAGE TOGGLE ── */
-    .lang-toggle {
-      position: fixed;
-      top: 16px;
-      right: 20px;
-      z-index: 100;
-      display: flex;
-      gap: 2px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 3px;
-    }
-    .lang-btn {
-      padding: 5px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all .2s;
-      font-family: 'JetBrains Mono', monospace;
-      background: transparent;
-      border: none;
-      color: var(--dim);
-    }
-    .lang-btn.active {
-      background: var(--accent);
-      color: #0c0c0c;
-    }
-
     /* ── TERMINAL INTRO ── */
     .terminal-wrap {
       min-height: 100vh;
@@ -184,20 +154,6 @@
 
     hr { border: none; border-top: 1px solid rgba(255,255,255,0.04); }
 
-    /* ── BILINGUAL ── */
-    [lang="en"] { display: none; }
-    [lang="zh"] { display: block; }
-    body.lang-en [lang="en"] { display: block; }
-    body.lang-en [lang="zh"] { display: none; }
-
-    /* bilingual content in same card */
-    .bi-block { margin-bottom: 12px; }
-    .bi-block:last-child { margin-bottom: 0; }
-    .bi-en { display: none; color: var(--muted); }
-    .bi-zh { display: block; color: var(--muted); }
-    body.lang-en .bi-en { display: block; }
-    body.lang-en .bi-zh { display: none; }
-
     @media (max-width: 600px) {
       .hero-grid { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 56px 1fr; gap: 12px; }
@@ -206,17 +162,10 @@
       .ip-qr { display: flex; align-items: center; gap: 12px; flex-direction: row; justify-content: center; }
       .ip-qr img { width: 100px; height: 100px; margin-bottom: 0; }
       section { padding: 56px 20px; }
-      .lang-toggle { top: 12px; right: 12px; }
     }
   </style>
 </head>
 <body>
-
-<!-- Language Toggle -->
-<div class="lang-toggle">
-  <button class="lang-btn active" id="btn-en">EN</button>
-  <button class="lang-btn" id="btn-zh">中文</button>
-</div>
 
 <!-- ═══════════════════════════════════════════
      TERMINAL INTRO
@@ -231,34 +180,26 @@
     </div>
     <div class="term-body">
       <div class="term-line"><span class="term-prompt">❯</span> <span class="term-cmd">whoami</span></div>
-      <div class="term-out" lang="en">Haiyang Chen / Benjie</div>
-      <div class="term-out" lang="zh">陈海洋 / Benjie</div>
+      <div class="term-out">陈海洋 / Benjie</div>
 
       <div class="term-line"><span class="term-prompt">❯</span> <span class="term-cmd">cat bio.txt</span></div>
-      <div class="term-out" lang="en">Tencent Cloud · Big Data Product Marketing</div>
-      <div class="term-out" lang="zh">腾讯云 · 大数据产品市场</div>
-      <div class="term-out" lang="en">Half Marathon PB 1:42:30 / 10K PB 46:16</div>
-      <div class="term-out" lang="zh">半马 PB 1:42:30 / 10K PB 46:16</div>
-      <div class="term-out" lang="en">Running / Cycling / Badminton / Hiking</div>
-      <div class="term-out" lang="zh">跑步 / 骑车 / 羽毛球 / 徒步</div>
-      <div class="term-out" lang="en">Long-term plan: relocate to Berlin, execution in progress</div>
-      <div class="term-out" lang="zh">长期迁居柏林方向确定，执行在路上</div>
+      <div class="term-out">腾讯云 · 大数据产品市场</div>
+      <div class="term-out">半马 PB 1:42:30 / 10K PB 46:16</div>
+      <div class="term-out">跑步 / 骑车 / 羽毛球 / 徒步</div>
+      <div class="term-out">长期迁居柏林方向确定，执行在路上</div>
 
       <div class="term-line"><span class="term-prompt">❯</span> <span class="term-cmd">cat doing.txt</span></div>
-      <div class="term-out" lang="en">Data+AI Product Marketing</div>
-      <div class="term-out" lang="zh">Data+AI 产品市场</div>
-      <div class="term-out" lang="en">Using AI tools to turn ideas into products</div>
-      <div class="term-out" lang="zh">用 AI 工具把想法变成产品</div>
-      <div class="term-out" lang="en">Writing on Substack: The Boundary Layer</div>
-      <div class="term-out" lang="zh">写 Substack：The Boundary Layer</div>
+      <div class="term-out">Data+AI 产品市场</div>
+      <div class="term-out">用 AI 工具把想法变成产品</div>
+      <div class="term-out">写 Substack：The Boundary Layer</div>
 
       <div class="term-line"><span class="term-prompt">❯</span> <span class="term-cmd">open main --contact</span></div>
-      <div class="term-out accent">→ entering main site...</div>
+      <div class="term-out accent">→ 进入主站...</div>
       <div class="term-line" style="margin-top:16px"><span class="term-prompt">❯</span> <span class="term-cmd"></span><span class="term-cursor"></span></div>
     </div>
   </div>
-  <div class="term-hint">↑ or click anywhere to continue</div>
-</div>
+  <div class="term-hint">↑ 或点击任意处继续</div>
+:</div>
 
 <!-- ═══════════════════════════════════════════
      MAIN SITE
@@ -271,13 +212,8 @@
     <div class="hero-grid">
       <img src="images/头像.png" alt="陈海洋" class="avatar" />
       <div>
-        <h1 class="hero-title" lang="en">Haiyang Chen<br/><span class="dim">Benjie / Beijing / Berlin in progress</span></h1>
-        <h1 class="hero-title" lang="zh">陈海洋<br/><span class="dim">Benjie / 北京 / 柏林进行中</span></h1>
-        <p class="hero-bio" lang="en">
-          Tencent Cloud · Big Data Product Marketing. Translating complex tech into actionable insights.
-          Half marathon PB 1:42:30, 10K PB 46:16.
-        </p>
-        <p class="hero-bio" lang="zh">
+        <h1 class="hero-title">陈海洋<br/><span class="dim">Benjie / 北京 / 柏林进行中</span></h1>
+        <p class="hero-bio">
           腾讯云，大数据产品市场。把复杂技术翻译成可决策的语言。
           半马 PB 1:42:30，10K PB 46:16。
         </p>
@@ -302,22 +238,10 @@
   <section>
     <div class="label">$ cat about.txt</div>
     <div class="about-card">
-      <div class="bi-block">
-        <p lang="en">Direction set, execution in progress.<br>My girlfriend works at the Berlin Foreign Ministry — German A2 in progress, slow but steady.<br>15+ countries visited. Greece is a favorite. Nepal trek was unforgettable.</p>
-        <p lang="zh">方向确定，执行在路上。<br>女朋友在柏林外交部工作，德语 A2 中，学得慢但一直在学。<br>去过 15+ 国家，希腊很不错，尼泊尔徒步那段最难忘。</p>
-      </div>
-      <div class="bi-block">
-        <p lang="en">Running is taken seriously. Targeting a sub-3:30 marathon this year. Data-driven, not willpower-driven — systems carry you through the hard stretches.</p>
-        <p lang="zh">准备今年完成全马 330。数据驱动，不是意志力驱动——靠体系撑过波动。</p>
-      </div>
-      <div class="bi-block">
-        <p lang="en">Books read/in progress: The Brothers Karamazov (9/10), Chinese Political History (8/10), The Robot Rebellion, The Righteous Mind.</p>
-        <p lang="zh">读过/在读的书：《卡拉马佐夫兄弟》9 分，《中国历代政治得失》8 分，《机器人叛乱》《正义之心》（The Righteous Mind）。</p>
-      </div>
-      <div class="bi-block">
-        <p lang="en">Not a programmer, but uses AI tools to turn ideas into products.</p>
-        <p lang="zh">不是程序员，但会用 AI 工具把想法变成产品。</p>
-      </div>
+      <p>方向确定，执行在路上。<br>女朋友在柏林外交部工作，德语 A2 中，学得慢但一直在学。<br>去过 15+ 国家，希腊很不错，尼泊尔徒步那段最难忘。</p>
+      <p>准备今年完成全马 330。数据驱动，不是意志力驱动——靠体系撑过波动。</p>
+      <p>读过/在读的书：《卡拉马佐夫兄弟》9 分，《中国历代政治得失》8 分，《机器人叛乱》《正义之心》（The Righteous Mind）。</p>
+      <p>不是程序员，但会用 AI 工具把想法变成产品。</p>
     </div>
   </section>
 
@@ -327,19 +251,18 @@
   <section>
     <div class="label">$ cat hobbies.log</div>
     <div class="pills">
-      <span class="pill">🏃 跑步 / Running</span>
-      <span class="pill">🚴 骑车 / Cycling</span>
-      <span class="pill">🏸 羽毛球 / Badminton</span>
-      <span class="pill">🥾 徒步 / Hiking</span>
+      <span class="pill">🏃 跑步</span>
+      <span class="pill">🚴 骑车</span>
+      <span class="pill">🏸 羽毛球</span>
+      <span class="pill">🥾 徒步</span>
     </div>
-    <p style="color:var(--muted);font-size:14px;margin-bottom:4px;" lang="en">Half Marathon PB 1:42:30 · 10K PB 46:16. Cycling, badminton, hiking on rotation.</p>
-    <p style="color:var(--muted);font-size:14px;margin-bottom:4px;" lang="zh">半马 PB 1:42:30 · 10K PB 46:16。骑车、羽毛球、徒步穿插。</p>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:4px;">半马 PB 1:42:30，10K PB 46:16。骑车、羽毛球、徒步穿插。</p>
 
     <div class="photo-scroll">
-      <img src="images/跑步照片1.jpg" alt="Running" />
-      <img src="images/跑步照片2.jpg" alt="Running" />
-      <img src="images/跑步照片 中国10K成绩.jpg" alt="10K Result" />
-      <img src="images/跑步照片 唐山半马成绩.jpg" alt="Half Marathon Result" />
+      <img src="images/跑步照片1.jpg" alt="跑步" />
+      <img src="images/跑步照片2.jpg" alt="跑步" />
+      <img src="images/跑步照片 中国10K成绩.jpg" alt="10K成绩" />
+      <img src="images/跑步照片 唐山半马成绩.jpg" alt="半马成绩" />
     </div>
   </section>
 
@@ -353,21 +276,17 @@
         <div class="ip-card">
           <div class="ip-icon">📮</div>
           <h3>Substack · The Boundary Layer</h3>
-          <p lang="en">Weekly updates on Data+AI industry narrative & personal growth observations.<br/><a href="https://benjhchen.substack.com/publish/home" target="_blank">benjhchen.substack.com →</a></p>
-          <p lang="zh">每周更新，Data+AI 行业叙事 + 个人成长观察。<br/><a href="https://benjhchen.substack.com/publish/home" target="_blank">benjhchen.substack.com →</a></p>
+          <p>每周更新，Data+AI 行业叙事 + 个人成长观察。<br/><a href="https://benjhchen.substack.com/publish/home" target="_blank">benjhchen.substack.com →</a></p>
         </div>
         <div class="ip-card">
           <div class="ip-icon">📱</div>
-          <h3 lang="en">WeChat Official Account</h3>
-          <h3 lang="zh">公众号</h3>
-          <p lang="en">Same name: The Boundary Layer.<br/>Chinese content首发地.</p>
-          <p lang="zh">同名：The Boundary Layer。<br/>中文内容首发地。</p>
+          <h3>公众号</h3>
+          <p>同名：The Boundary Layer。<br/>中文内容首发地。</p>
         </div>
       </div>
       <div class="ip-qr">
         <img src="images/微信公众号二维码.jpg" alt="公众号" />
-        <p lang="en">公众号</p>
-        <p lang="zh">公众号</p>
+        <p>公众号</p>
       </div>
     </div>
   </section>
@@ -377,36 +296,35 @@
   <!-- WORK -->
   <section>
     <div class="label">$ cat work.log</div>
-    <p style="color:var(--muted);font-size:14px;margin-bottom:8px;" lang="en">15+ years in marketing. Didi → Alibaba Cloud → Tencent. Not great at faking optimism. Very good at making complex things clear.</p>
-    <p style="color:var(--muted);font-size:14px;margin-bottom:8px;" lang="zh">15年+，从滴滴到阿里云到腾讯。不擅长假装乐观，擅长把复杂的东西讲清楚。</p>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:8px;">15年+，从滴滴到阿里云到腾讯。不擅长假装乐观，擅长把复杂的东西讲清楚。</p>
 
     <div class="timeline">
       <div class="timeline-item">
         <div class="tl-year">2024–</div>
         <div>
-          <div class="tl-role">Tencent Cloud · Big Data Product Marketing</div>
-          <div class="tl-company">Tencent Cloud · Beijing</div>
+          <div class="tl-role">腾讯云 · 大数据产品市场</div>
+          <div class="tl-company">Tencent Cloud · 北京</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="tl-year">20–23</div>
         <div>
-          <div class="tl-role">Alibaba Cloud · Big Data & AI Product Marketing</div>
-          <div class="tl-company">Alibaba Cloud · Beijing</div>
+          <div class="tl-role">阿里云 · 大数据与AI产品营销</div>
+          <div class="tl-company">Alibaba Cloud · 北京</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="tl-year">15–18</div>
         <div>
-          <div class="tl-role">Didi · Branding</div>
-          <div class="tl-company">Didi · Beijing</div>
+          <div class="tl-role">滴滴出行 · 品牌</div>
+          <div class="tl-company">Didi · 北京</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="tl-year">14–15</div>
         <div>
-          <div class="tl-role">OPPO India · Marketing</div>
-          <div class="tl-company">OPPO India · New Delhi</div>
+          <div class="tl-role">OPPO India · 市场</div>
+          <div class="tl-company">OPPO India · 新德里</div>
         </div>
       </div>
     </div>
@@ -417,23 +335,20 @@
   <!-- MINI PROGRAMS -->
   <section>
     <div class="label">$ ls projects/</div>
-    <p style="color:var(--muted);font-size:14px;margin-bottom:8px;" lang="en">Not a programmer, but AI tools make this possible.</p>
-    <p style="color:var(--muted);font-size:14px;margin-bottom:8px;" lang="zh">不是程序员，但 AI 工具让这件事变得可能。</p>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:8px;">不是程序员，但 AI 工具让这件事变得可能。</p>
 
     <div class="mp-grid">
       <div class="mp-card">
         <div class="mp-icon">👟</div>
-        <div class="mp-name">Find Your Running Shoes</div>
-        <div class="mp-desc" lang="en">3-step questionnaire, AI-matched shoes, reasons generated by Tencent's Hunyuan model.</div>
-        <div class="mp-desc" lang="zh">3步问卷，AI匹配最合适的跑鞋。</div>
-        <img src="images/跑鞋选对 小程序码.png" alt="Mini Program" class="mp-qr" />
+        <div class="mp-name">跑鞋选对</div>
+        <div class="mp-desc">3步问卷，AI匹配最合适的跑鞋。</div>
+        <img src="images/跑鞋选对 小程序码.png" alt="小程序码" class="mp-qr" />
       </div>
       <div class="mp-card">
         <div class="mp-icon">🔥</div>
-        <div class="mp-name">Go Burn</div>
-        <div class="mp-desc" lang="en">Sports score, OCR screenshot, 4-axis "burn score" poster.</div>
-        <div class="mp-desc" lang="zh">运动评分，生成四维「燃力值」海报。</div>
-        <img src="images/燃一下 小程序码.png" alt="Mini Program" class="mp-qr" />
+        <div class="mp-name">燃一下</div>
+        <div class="mp-desc">运动评分，生成四维「燃力值」海报。</div>
+        <img src="images/燃一下 小程序码.png" alt="小程序码" class="mp-qr" />
       </div>
     </div>
   </section>
@@ -442,26 +357,9 @@
 
 <footer>
   <a href="https://haiyangchenbj.github.io/personal/" style="color:var(--dim);">haiyangchenbj.github.io</a>
-</footer>
+:</footer>
 
 <script>
-  // Language toggle
-  const btnEn = document.getElementById('btn-en');
-  const btnZh = document.getElementById('btn-zh');
-
-  btnEn.addEventListener('click', () => {
-    document.body.classList.add('lang-en');
-    btnEn.classList.add('active');
-    btnZh.classList.remove('active');
-  });
-
-  btnZh.addEventListener('click', () => {
-    document.body.classList.remove('lang-en');
-    btnZh.classList.add('active');
-    btnEn.classList.remove('active');
-  });
-
-  // Terminal auto-enter + main site
   let termDone = false;
   function showMain() {
     if (termDone) return;
