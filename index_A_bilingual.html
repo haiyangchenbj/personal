@@ -185,10 +185,10 @@
     hr { border: none; border-top: 1px solid rgba(255,255,255,0.04); }
 
     /* ── BILINGUAL ── */
-    [lang="en"] { display: none; }
-    [lang="zh"] { display: block; }
-    body.lang-en [lang="en"] { display: block; }
-    body.lang-en [lang="zh"] { display: none; }
+    [lang="zh"] { display: none; }
+    [lang="en"] { display: block; }
+    body.lang-zh [lang="zh"] { display: block; }
+    body.lang-zh [lang="en"] { display: none; }
 
     /* bilingual content in same card */
     .bi-block { margin-bottom: 12px; }
@@ -449,14 +449,17 @@
   const btnEn = document.getElementById('btn-en');
   const btnZh = document.getElementById('btn-zh');
 
+  // Default: English
+  document.body.classList.add('lang-zh');
+
   btnEn.addEventListener('click', () => {
-    document.body.classList.add('lang-en');
+    document.body.classList.remove('lang-zh');
     btnEn.classList.add('active');
     btnZh.classList.remove('active');
   });
 
   btnZh.addEventListener('click', () => {
-    document.body.classList.remove('lang-en');
+    document.body.classList.add('lang-zh');
     btnZh.classList.add('active');
     btnEn.classList.remove('active');
   });
