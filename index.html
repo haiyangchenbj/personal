@@ -160,16 +160,18 @@
     .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
     .pill { padding: 4px 12px; border-radius: 20px; background: var(--card); border: 1px solid var(--border); font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
     /* ── IP CARDS ── */
-    .ip-layout { display: grid; grid-template-columns: 1fr 120px; gap: 24px; align-items: start; margin-top: 24px; }
+    .ip-layout { margin-top: 24px; }
     .ip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .ip-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; transition: border-color .2s, transform .2s; }
     .ip-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+    .ip-card-account { display: grid; grid-template-columns: minmax(0, 1fr) 96px; gap: 14px; align-items: center; }
+    .ip-account-copy { min-width: 0; }
     .ip-icon { font-size: 22px; margin-bottom: 10px; }
     .ip-card h3 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
     .ip-card p { font-size: 12px; color: var(--muted); line-height: 1.7; }
     .ip-card a { color: var(--accent); font-size: 12px; }
     .ip-qr { text-align: center; }
-    .ip-qr img { width: 120px; height: 120px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 6px; }
+    .ip-qr img { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 6px; }
     .ip-qr p { font-size: 10px; color: var(--dim); font-family: 'JetBrains Mono', monospace; }
     /* ── BLOG TIMELINE ── */
     .timeline { margin-top: 24px; }
@@ -453,19 +455,20 @@
           <p lang="en">Weekly updates on Data+AI industry narrative & personal growth observations.<br/><a href="https://benjhchen.substack.com" target="_blank">benjhchen.substack.com →</a></p>
           <p lang="zh">每周更新，Data+AI 行业叙事 + 个人成长观察。<br/><a href="https://benjhchen.substack.com" target="_blank">benjhchen.substack.com →</a></p>
         </div>
-        <div class="ip-card">
-          <div class="ip-icon">📱</div>
-          <h3 lang="en">WeChat Official Account</h3>
-          <h3 lang="zh">公众号</h3>
-          <p lang="en">Same name: The Boundary Layer.<br/>Chinese content首发地.</p>
-          <p lang="zh">同名：The Boundary Layer。<br/>中文内容首发地。</p>
+        <div class="ip-card ip-card-account">
+          <div class="ip-account-copy">
+            <div class="ip-icon">📱</div>
+            <h3 lang="en">WeChat Official Account</h3>
+            <h3 lang="zh">公众号</h3>
+            <p lang="en">Same name: The Boundary Layer.<br/>Chinese content首发地.</p>
+            <p lang="zh">同名：The Boundary Layer。<br/>中文内容首发地。</p>
+          </div>
+          <div class="ip-qr">
+            <img src="images/微信公众号二维码.jpg" alt="公众号" />
+            <p lang="en">公众号</p>
+            <p lang="zh">公众号</p>
+          </div>
         </div>
-      </div>
-      <div class="ip-qr">
-        <img src="images/微信公众号二维码.jpg" alt="公众号" />
-        <p lang="en">公众号</p>
-        <p lang="zh">公众号</p>
-      </div>
     </div>
   </section>
 
